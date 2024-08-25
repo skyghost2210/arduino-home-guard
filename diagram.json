@@ -1,0 +1,214 @@
+{
+  "version": 1,
+  "author": "Quang Khoi Nguyen",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-arduino-uno",
+      "id": "uno",
+      "top": 163.8,
+      "left": -106.2,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -140.57,
+      "left": 6.4,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "pir1",
+      "top": -53.6,
+      "left": -266.58,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-membrane-keypad",
+      "id": "keypad1",
+      "top": -434,
+      "left": -196,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [
+      "lcd1:VSS",
+      "uno:GND.1",
+      "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "lcd1:VDD",
+      "uno:5V",
+      "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "lcd1:RS",
+      "uno:12",
+      "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "lcd1:RW",
+      "uno:GND.1",
+      "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "lcd1:E",
+      "uno:11",
+      "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "lcd1:D4",
+      "uno:10",
+      "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "lcd1:D5",
+      "uno:9",
+      "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "lcd1:D6",
+      "uno:8",
+      "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "lcd1:D7",
+      "uno:7",
+      "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "lcd1:A",
+      "uno:5V",
+      "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "lcd1:K",
+      "uno:GND.1",
+      "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "pir1:VCC",
+      "uno:5V",
+      "red",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "pir1:GND",
+      "uno:GND.1",
+      "black",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "pir1:OUT",
+      "uno:1",
+      "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "keypad1:R1",
+      "uno:9",
+      "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "keypad1:R2",
+      "uno:8",
+      "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "keypad1:R3",
+      "uno:7",
+      "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "keypad1:R4",
+      "uno:6",
+      "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "keypad1:C1",
+      "uno:5",
+      "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "keypad1:C2",
+      "uno:4",
+      "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "keypad1:C3",
+      "uno:3",
+      "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "keypad1:C4",
+      "uno:2",
+      "green",
+      [
+        "v0"
+      ]
+    ]
+  ],
+  "dependencies": {}
+}
