@@ -35,6 +35,24 @@ void update_rgb_led(int pinR, int pinG, int pinB, int &currentLedR, int &current
     currentLedB = newB;
 }
 
+void update_led_rgb_without_delay(unsigned long &ledChangeMilliTimestamp, unsigned long ledChangeInterval, int pinR, int pinG, int pinB, int &currentLedR, int &currentLedG, int &currentLedB, int firstR, int firstG, int firstB, int secondR, int secondG, int secondB)
+{
+    unsigned long currentMillis = millis();
+    // Blink without delay
+    if (currentMillis - ledChangeMilliTimestamp >= ledChangeInterval)
+    {
+        ledChangeMilliTimestamp = currentMillis;
+        if (currentLedR == secondR && currentLedG == secondG && currentLedB == secondB)
+        {
+            update_rgb_led(pinR, pinG, pinB, currentLedR, currentLedG, currentLedB, firstR, firstG, firstB);
+        }
+        else
+        {
+            update_rgb_led(pinR, pinG, pinB, currentLedR, currentLedG, currentLedB, secondR, secondG, secondB);
+        }
+    }
+}
+
 String get_text_EEPROM(int START_ADDRESS)
 {
     // Read the String

@@ -44,6 +44,11 @@ unsigned long endMillis;
 int currentLedR = 255;
 int currentLedG = 255;
 int currentLedB = 255;
+unsigned long pendingAlertLedChangeMilliTimestamp = 0;
+unsigned long alertLedChangeMilliTimestamp = 0;
+// Unsigned type to remove warning comparison signed vs unsigned
+const unsigned long pendingAlertLedChangeInterval = 1000;
+const unsigned long alertLedChangeInterval = 500;
 
 GuardState guardState;
 
@@ -92,18 +97,7 @@ void loop()
     /*Start counting*/
     if (currentMillis <= endMillis && currentMillis >= beginMillis && isCountingStarted == true)
     {
-      // >= 1 to prevent duplicate color when % 2 nearly
-      if (int((endMillis - currentMillis) / 1000) % 2 >= 1)
-      {
-        if (currentLedR == 0 && currentLedG == 0 && currentLedB == 204)
-        {
-          update_rgb_led(pinR, pinG, pinB, currentLedR, currentLedG, currentLedB, 255, 0, 255);
-        }
-        else
-        {
-          update_rgb_led(pinR, pinG, pinB, currentLedR, currentLedG, currentLedB, 0, 0, 204);
-        }
-      }
+      update_led_rgb_without_delay(pendingAlertLedChangeMilliTimestamp, pendingAlertLedChangeInterval, pinR, pinG, pinB, currentLedR, currentLedG, currentLedB, 255, 0, 255, 0, 0, 204);
       guardState.disable(lcd, currentDisplayString, keypad, currentlyInputtedString, passcodeLength, String("Motion/") + String(long((endMillis - currentMillis) / 1000)) + String("s left"));
       currentMillis = millis();
 
@@ -120,6 +114,7 @@ void loop()
     // Run out of time
     if (guardState.isAlertTriggered() == true && isCountingStarted == false)
     {
+      update_led_rgb_without_delay(alertLedChangeMilliTimestamp, alertLedChangeInterval, pinR, pinG, pinB, currentLedR, currentLedG, currentLedB, 255, 0, 0, 255, 255, 255);
       /*Alert Overhere*/
       guardState.disable(lcd, currentDisplayString, keypad, currentlyInputtedString, passcodeLength, String("INTRUDER ALERT!"));
     }
