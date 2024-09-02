@@ -4,10 +4,10 @@
   "editor": "wokwi",
   "parts": [
     {
-      "type": "wokwi-arduino-uno",
-      "id": "uno",
-      "top": 163.8,
-      "left": -106.2,
+      "type": "wokwi-arduino-mega",
+      "id": "mega",
+      "top": 183,
+      "left": -70.8,
       "attrs": {}
     },
     {
@@ -30,100 +30,109 @@
       "top": -434,
       "left": -196,
       "attrs": {}
+    },
+    {
+      "type": "wokwi-rgb-led",
+      "id": "rgb1",
+      "top": 109.6,
+      "left": 413.9,
+      "attrs": {
+        "common": "cathode"
+      }
     }
   ],
   "connections": [
     [
       "lcd1:VSS",
-      "uno:GND.1",
-      "green",
+      "mega:GND.1",
+      "black",
       [
         "v0"
       ]
     ],
     [
       "lcd1:VDD",
-      "uno:5V",
-      "green",
+      "mega:5V",
+      "red",
       [
         "v0"
       ]
     ],
     [
       "lcd1:RS",
-      "uno:12",
-      "green",
+      "mega:12",
+      "violet",
       [
         "v0"
       ]
     ],
     [
       "lcd1:RW",
-      "uno:GND.1",
-      "green",
+      "mega:GND.1",
+      "violet",
       [
         "v0"
       ]
     ],
     [
       "lcd1:E",
-      "uno:11",
-      "green",
+      "mega:11",
+      "violet",
       [
         "v0"
       ]
     ],
     [
       "lcd1:D4",
-      "uno:10",
-      "green",
+      "mega:10",
+      "violet",
       [
         "v0"
       ]
     ],
     [
       "lcd1:D5",
-      "uno:9",
-      "green",
+      "mega:13",
+      "violet",
       [
         "v0"
       ]
     ],
     [
       "lcd1:D6",
-      "uno:8",
-      "green",
+      "mega:14",
+      "violet",
       [
         "v0"
       ]
     ],
     [
       "lcd1:D7",
-      "uno:7",
-      "green",
+      "mega:15",
+      "violet",
       [
         "v0"
       ]
     ],
     [
       "lcd1:A",
-      "uno:5V",
-      "green",
+      "mega:5V",
+      "red",
       [
         "v0"
       ]
     ],
     [
       "lcd1:K",
-      "uno:GND.1",
-      "green",
+      "mega:GND.1",
+      "violet",
       [
         "v0"
       ]
     ],
     [
       "pir1:VCC",
-      "uno:5V",
+      "mega:5V",
       "red",
       [
         "v0"
@@ -131,7 +140,7 @@
     ],
     [
       "pir1:GND",
-      "uno:GND.1",
+      "mega:GND.1",
       "black",
       [
         "v0"
@@ -139,7 +148,7 @@
     ],
     [
       "pir1:OUT",
-      "uno:1",
+      "mega:1",
       "green",
       [
         "v0"
@@ -147,7 +156,7 @@
     ],
     [
       "keypad1:R1",
-      "uno:9",
+      "mega:9",
       "green",
       [
         "v0"
@@ -155,7 +164,7 @@
     ],
     [
       "keypad1:R2",
-      "uno:8",
+      "mega:8",
       "green",
       [
         "v0"
@@ -163,7 +172,7 @@
     ],
     [
       "keypad1:R3",
-      "uno:7",
+      "mega:7",
       "green",
       [
         "v0"
@@ -171,7 +180,7 @@
     ],
     [
       "keypad1:R4",
-      "uno:6",
+      "mega:6",
       "green",
       [
         "v0"
@@ -179,7 +188,7 @@
     ],
     [
       "keypad1:C1",
-      "uno:5",
+      "mega:5",
       "green",
       [
         "v0"
@@ -187,7 +196,7 @@
     ],
     [
       "keypad1:C2",
-      "uno:4",
+      "mega:4",
       "green",
       [
         "v0"
@@ -195,7 +204,7 @@
     ],
     [
       "keypad1:C3",
-      "uno:3",
+      "mega:3",
       "green",
       [
         "v0"
@@ -203,8 +212,40 @@
     ],
     [
       "keypad1:C4",
-      "uno:2",
+      "mega:2",
       "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "rgb1:R",
+      "mega:18",
+      "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "rgb1:G",
+      "mega:19",
+      "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "rgb1:B",
+      "mega:20",
+      "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "rgb1:COM",
+      "mega:GND.1",
+      "black",
       [
         "v0"
       ]

@@ -25,6 +25,16 @@ void update_display(LiquidCrystal &lcd, String &currentDisplayString, String new
     }
 }
 
+void update_rgb_led(int pinR, int pinG, int pinB, int &currentLedR, int &currentLedG, int &currentLedB, int newR, int newG, int newB)
+{
+    analogWrite(pinR, newR);
+    analogWrite(pinG, newG);
+    analogWrite(pinB, newB);
+    currentLedR = newR;
+    currentLedG = newG;
+    currentLedB = newB;
+}
+
 String get_text_EEPROM(int START_ADDRESS)
 {
     // Read the String

@@ -5,7 +5,7 @@
 #include "utility.h"
 
 /*LCD SETUP*/
-LiquidCrystal lcd(12, 11, 10, 9, 8, 7);
+LiquidCrystal lcd(12, 11, 10, 13, 14, 15);
 String currentDisplayString = "";
 
 /*Motion Sensor SETUP*/
@@ -29,6 +29,11 @@ Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, ROWS, COLS);
 
 String currentlyInputtedString = "";
 
+/*RGB LED SETUP*/
+const int pinR = 18;
+const int pinG = 19;
+const int pinB = 20;
+
 /*ACROSS LOOP VARIABLES*/
 const unsigned int passcodeLength = 4;
 const long interval = 10000;
@@ -36,14 +41,22 @@ bool isCountingStarted = false;
 unsigned long currentMillis;
 unsigned long beginMillis;
 unsigned long endMillis;
+int currentLedR = 255;
+int currentLedG = 255;
+int currentLedB = 255;
 
 GuardState guardState;
 
 void setup()
 {
+  /*LCD SETUP*/
   lcd.begin(16, 2);
-  // Keypad
+  /*KEYPAD SETUP*/
   Serial.begin(9600);
+  /*RGB SETUP*/
+  pinMode(pinR, OUTPUT);
+  pinMode(pinG, OUTPUT);
+  pinMode(pinB, OUTPUT);
 }
 
 void loop()
@@ -54,6 +67,7 @@ void loop()
   /* Activate first */
   if (guardState.isArmed() == false)
   {
+    update_rgb_led(pinR, pinG, pinB, currentLedR, currentLedG, currentLedB, 255, 255, 0);
     guardState.activate(lcd, currentDisplayString, keypad, currentlyInputtedString, passcodeLength);
   }
   // Dectection Mode
@@ -61,6 +75,7 @@ void loop()
   else if (guardState.isAlertTriggered() == false && guardState.isArmed() && currentMotionSensorStatus == LOW) /*guardState.isArmed() == true for clarity*/
   {
     update_display(lcd, currentDisplayString, get_text_in_middle_row("Detection Mode") + get_text_in_middle_row("is on"));
+    update_rgb_led(pinR, pinG, pinB, currentLedR, currentLedG, currentLedB, 0, 255, 0);
     // NOT Allowed to disable while no motion because it it not realistic
   }
   else if (currentMotionSensorStatus == HIGH || (guardState.isArmed() == true && guardState.isAlertTriggered() == true)) /*guardState.isArmed() == true for clarity*/
@@ -77,6 +92,18 @@ void loop()
     /*Start counting*/
     if (currentMillis <= endMillis && currentMillis >= beginMillis && isCountingStarted == true)
     {
+      // >= 1 to prevent duplicate color when % 2 nearly
+      if (int((endMillis - currentMillis) / 1000) % 2 >= 1)
+      {
+        if (currentLedR == 0 && currentLedG == 0 && currentLedB == 204)
+        {
+          update_rgb_led(pinR, pinG, pinB, currentLedR, currentLedG, currentLedB, 255, 0, 255);
+        }
+        else
+        {
+          update_rgb_led(pinR, pinG, pinB, currentLedR, currentLedG, currentLedB, 0, 0, 204);
+        }
+      }
       guardState.disable(lcd, currentDisplayString, keypad, currentlyInputtedString, passcodeLength, String("Motion/") + String(long((endMillis - currentMillis) / 1000)) + String("s left"));
       currentMillis = millis();
 

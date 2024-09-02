@@ -7,6 +7,8 @@
 
 void update_display(LiquidCrystal &lcd, String &currentString, String newString);
 
+void update_rgb_led(int pinR, int pinG, int pinB, int &currentLedR, int &currentLedG, int &currentLedB, int newR, int newG, int newB);
+
 String get_text_EEPROM(int START_ADDRESS);
 
 void save_text_EEPROM(String text, int START_ADDRESS);
