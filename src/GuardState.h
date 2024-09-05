@@ -11,7 +11,7 @@ class GuardState
 public:
     GuardState(); // Initialize == def __init__
     void activate(LiquidCrystal &lcd, String &currentDisplayText, Keypad &keypad, String &currentlyInputtedString, unsigned int passcodeLength);
-    void disable(LiquidCrystal &lcd, String &currentDisplayText, Keypad &keypad, String &currentlyInputtedString, unsigned int passcodeLength, String displayText);
+    void disable(LiquidCrystal &lcd, String &currentDisplayText, Keypad &keypad, String &currentlyInputtedString, unsigned int passcodeLength, String displayText, int speakerPin, bool &isSpeakerPlaying);
     void triggerAlert();
     bool isArmed();
     bool isAlertTriggered();

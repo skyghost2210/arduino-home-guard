@@ -34,10 +34,14 @@ const int pinR = 18;
 const int pinG = 19;
 const int pinB = 20;
 
+/*Speaker SETUP*/
+const int speakerPin = 16;
+
 /*ACROSS LOOP VARIABLES*/
 const unsigned int passcodeLength = 4;
 const long interval = 10000;
 bool isCountingStarted = false;
+bool isSpeakerPlaying = false;
 unsigned long currentMillis;
 unsigned long beginMillis;
 unsigned long endMillis;
@@ -46,9 +50,12 @@ int currentLedG = 255;
 int currentLedB = 255;
 unsigned long pendingAlertLedChangeMilliTimestamp = 0;
 unsigned long alertLedChangeMilliTimestamp = 0;
+unsigned long speakerOnTimestamp = 0;
 // Unsigned type to remove warning comparison signed vs unsigned
 const unsigned long pendingAlertLedChangeInterval = 1000;
 const unsigned long alertLedChangeInterval = 500;
+const unsigned long speakerOnTimestampInterval = 500;
+const int soundPitch = 3;
 
 GuardState guardState;
 
@@ -62,6 +69,9 @@ void setup()
   pinMode(pinR, OUTPUT);
   pinMode(pinG, OUTPUT);
   pinMode(pinB, OUTPUT);
+
+  /*SPEAKER SETUP*/
+  pinMode(speakerPin, OUTPUT);
 }
 
 void loop()
@@ -98,7 +108,7 @@ void loop()
     if (currentMillis <= endMillis && currentMillis >= beginMillis && isCountingStarted == true)
     {
       update_led_rgb_without_delay(pendingAlertLedChangeMilliTimestamp, pendingAlertLedChangeInterval, pinR, pinG, pinB, currentLedR, currentLedG, currentLedB, 255, 0, 255, 0, 0, 204);
-      guardState.disable(lcd, currentDisplayString, keypad, currentlyInputtedString, passcodeLength, String("Motion/") + String(long((endMillis - currentMillis) / 1000)) + String("s left"));
+      guardState.disable(lcd, currentDisplayString, keypad, currentlyInputtedString, passcodeLength, String("Motion/") + String(long((endMillis - currentMillis) / 1000)) + String("s left"), speakerPin, isSpeakerPlaying);
       currentMillis = millis();
 
       // Prevent reArmed but counting is still in range
@@ -114,9 +124,10 @@ void loop()
     // Run out of time
     if (guardState.isAlertTriggered() == true && isCountingStarted == false)
     {
+      buzzing_sound(speakerOnTimestamp, speakerOnTimestampInterval, speakerPin, soundPitch, isSpeakerPlaying);
       update_led_rgb_without_delay(alertLedChangeMilliTimestamp, alertLedChangeInterval, pinR, pinG, pinB, currentLedR, currentLedG, currentLedB, 255, 0, 0, 255, 255, 255);
       /*Alert Overhere*/
-      guardState.disable(lcd, currentDisplayString, keypad, currentlyInputtedString, passcodeLength, String("INTRUDER ALERT!"));
+      guardState.disable(lcd, currentDisplayString, keypad, currentlyInputtedString, passcodeLength, String("INTRUDER ALERT!"), speakerPin, isSpeakerPlaying);
     }
   }
 }

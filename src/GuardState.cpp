@@ -34,14 +34,19 @@ void GuardState::activate(LiquidCrystal &lcd, String &currentDisplayText, Keypad
 }
 
 /*Two types of disable: When motion detected and when normal*/
-void GuardState::disable(LiquidCrystal &lcd, String &currentDisplayText, Keypad &keypad, String &currentlyInputtedString, unsigned int passcodeLength, String displayText)
+void GuardState::disable(LiquidCrystal &lcd, String &currentDisplayText, Keypad &keypad, String &currentlyInputtedString, unsigned int passcodeLength, String displayText, int speakerPin, bool &isSpeakerPlaying)
 {
     String passcode = get_inputted_passcode(lcd, currentDisplayText, keypad, currentlyInputtedString, 4, displayText);
     if (passcode == this->_passcode)
     {
+        noTone(speakerPin);
+        isSpeakerPlaying = false;
+
         this->_armed = false;
         this->_alertTriggered = false;
         this->_passcode = "";
+
+        // Update status to memory
         EEPROM.write(EEPROM_ADDR_ARMED, this->_armed ? 1 : 0);
         save_text_EEPROM(this->_passcode, EEPROM_ADDR_PASSCODE);
         EEPROM.write(EEPROM_ADDR_ALERTTRIGGERED, this->_alertTriggered ? 1 : 0);

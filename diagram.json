@@ -39,6 +39,15 @@
       "attrs": {
         "common": "cathode"
       }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 69.6,
+      "left": 481.8,
+      "attrs": {
+        "volume": "0.1"
+      }
     }
   ],
   "connections": [
@@ -149,7 +158,7 @@
     [
       "pir1:OUT",
       "mega:1",
-      "green",
+      "cyan",
       [
         "v0"
       ]
@@ -157,7 +166,7 @@
     [
       "keypad1:R1",
       "mega:9",
-      "green",
+      "orange",
       [
         "v0"
       ]
@@ -165,7 +174,7 @@
     [
       "keypad1:R2",
       "mega:8",
-      "green",
+      "orange",
       [
         "v0"
       ]
@@ -173,7 +182,7 @@
     [
       "keypad1:R3",
       "mega:7",
-      "green",
+      "orange",
       [
         "v0"
       ]
@@ -181,7 +190,7 @@
     [
       "keypad1:R4",
       "mega:6",
-      "green",
+      "orange",
       [
         "v0"
       ]
@@ -189,7 +198,7 @@
     [
       "keypad1:C1",
       "mega:5",
-      "green",
+      "orange",
       [
         "v0"
       ]
@@ -197,7 +206,7 @@
     [
       "keypad1:C2",
       "mega:4",
-      "green",
+      "orange",
       [
         "v0"
       ]
@@ -205,7 +214,7 @@
     [
       "keypad1:C3",
       "mega:3",
-      "green",
+      "orange",
       [
         "v0"
       ]
@@ -213,7 +222,7 @@
     [
       "keypad1:C4",
       "mega:2",
-      "green",
+      "orange",
       [
         "v0"
       ]
@@ -244,6 +253,22 @@
     ],
     [
       "rgb1:COM",
+      "mega:GND.1",
+      "black",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "bz1:2",
+      "mega:16",
+      "yellow",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "bz1:1",
       "mega:GND.1",
       "black",
       [

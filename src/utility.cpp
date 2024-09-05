@@ -53,6 +53,26 @@ void update_led_rgb_without_delay(unsigned long &ledChangeMilliTimestamp, unsign
     }
 }
 
+void buzzing_sound(unsigned long &speakerOnTimestamp, unsigned long speakerOnTimestampInterval, int spakerPin, int pitch, bool &isSpeakerPlaying)
+{
+    unsigned long currentMillis = millis();
+    // Blink without delay
+    if (currentMillis - speakerOnTimestamp >= speakerOnTimestampInterval)
+    {
+        speakerOnTimestamp = currentMillis;
+        if (isSpeakerPlaying)
+        {
+            noTone(spakerPin);
+            isSpeakerPlaying = false;
+        }
+        else
+        {
+            tone(spakerPin, pitch);
+            isSpeakerPlaying = true;
+        }
+    }
+}
+
 String get_text_EEPROM(int START_ADDRESS)
 {
     // Read the String

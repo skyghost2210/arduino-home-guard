@@ -11,6 +11,8 @@ void update_rgb_led(int pinR, int pinG, int pinB, int &currentLedR, int &current
 
 void update_led_rgb_without_delay(unsigned long &ledChangeMilliTimestamp, unsigned long ledChangeInterval, int pinR, int pinG, int pinB, int &currentLedR, int &currentLedG, int &currentLedB, int firstR, int firstG, int firstB, int secondR, int secondG, int secondB);
 
+void buzzing_sound(unsigned long &speakerOnTimestamp, unsigned long speakerOnTimestampInterval, int spakerPin, int pitch, bool &isSpeakerPlaying);
+
 String get_text_EEPROM(int START_ADDRESS);
 
 void save_text_EEPROM(String text, int START_ADDRESS);
