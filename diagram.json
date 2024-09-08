@@ -1,22 +1,10 @@
 {
   "version": 1,
-  "author": "Quang Khoi Nguyen",
+  "author": "Andruino Home Guard",
   "editor": "wokwi",
   "parts": [
-    {
-      "type": "wokwi-arduino-mega",
-      "id": "mega",
-      "top": 183,
-      "left": -70.8,
-      "attrs": {}
-    },
-    {
-      "type": "wokwi-lcd1602",
-      "id": "lcd1",
-      "top": -140.57,
-      "left": 6.4,
-      "attrs": {}
-    },
+    { "type": "wokwi-arduino-mega", "id": "mega", "top": 183, "left": -70.8, "attrs": {} },
+    { "type": "wokwi-lcd1602", "id": "lcd1", "top": -140.57, "left": 6.4, "attrs": {} },
     {
       "type": "wokwi-pir-motion-sensor",
       "id": "pir1",
@@ -24,257 +12,51 @@
       "left": -266.58,
       "attrs": {}
     },
-    {
-      "type": "wokwi-membrane-keypad",
-      "id": "keypad1",
-      "top": -434,
-      "left": -196,
-      "attrs": {}
-    },
+    { "type": "wokwi-membrane-keypad", "id": "keypad1", "top": -434, "left": -196, "attrs": {} },
     {
       "type": "wokwi-rgb-led",
       "id": "rgb1",
       "top": 109.6,
       "left": 413.9,
-      "attrs": {
-        "common": "cathode"
-      }
+      "attrs": { "common": "cathode" }
     },
     {
       "type": "wokwi-buzzer",
       "id": "bz1",
       "top": 69.6,
       "left": 481.8,
-      "attrs": {
-        "volume": "0.1"
-      }
+      "attrs": { "volume": "0.1" }
     }
   ],
   "connections": [
-    [
-      "lcd1:VSS",
-      "mega:GND.1",
-      "black",
-      [
-        "v0"
-      ]
-    ],
-    [
-      "lcd1:VDD",
-      "mega:5V",
-      "red",
-      [
-        "v0"
-      ]
-    ],
-    [
-      "lcd1:RS",
-      "mega:12",
-      "violet",
-      [
-        "v0"
-      ]
-    ],
-    [
-      "lcd1:RW",
-      "mega:GND.1",
-      "violet",
-      [
-        "v0"
-      ]
-    ],
-    [
-      "lcd1:E",
-      "mega:11",
-      "violet",
-      [
-        "v0"
-      ]
-    ],
-    [
-      "lcd1:D4",
-      "mega:10",
-      "violet",
-      [
-        "v0"
-      ]
-    ],
-    [
-      "lcd1:D5",
-      "mega:13",
-      "violet",
-      [
-        "v0"
-      ]
-    ],
-    [
-      "lcd1:D6",
-      "mega:14",
-      "violet",
-      [
-        "v0"
-      ]
-    ],
-    [
-      "lcd1:D7",
-      "mega:15",
-      "violet",
-      [
-        "v0"
-      ]
-    ],
-    [
-      "lcd1:A",
-      "mega:5V",
-      "red",
-      [
-        "v0"
-      ]
-    ],
-    [
-      "lcd1:K",
-      "mega:GND.1",
-      "violet",
-      [
-        "v0"
-      ]
-    ],
-    [
-      "pir1:VCC",
-      "mega:5V",
-      "red",
-      [
-        "v0"
-      ]
-    ],
-    [
-      "pir1:GND",
-      "mega:GND.1",
-      "black",
-      [
-        "v0"
-      ]
-    ],
-    [
-      "pir1:OUT",
-      "mega:1",
-      "cyan",
-      [
-        "v0"
-      ]
-    ],
-    [
-      "keypad1:R1",
-      "mega:9",
-      "orange",
-      [
-        "v0"
-      ]
-    ],
-    [
-      "keypad1:R2",
-      "mega:8",
-      "orange",
-      [
-        "v0"
-      ]
-    ],
-    [
-      "keypad1:R3",
-      "mega:7",
-      "orange",
-      [
-        "v0"
-      ]
-    ],
-    [
-      "keypad1:R4",
-      "mega:6",
-      "orange",
-      [
-        "v0"
-      ]
-    ],
-    [
-      "keypad1:C1",
-      "mega:5",
-      "orange",
-      [
-        "v0"
-      ]
-    ],
-    [
-      "keypad1:C2",
-      "mega:4",
-      "orange",
-      [
-        "v0"
-      ]
-    ],
-    [
-      "keypad1:C3",
-      "mega:3",
-      "orange",
-      [
-        "v0"
-      ]
-    ],
-    [
-      "keypad1:C4",
-      "mega:2",
-      "orange",
-      [
-        "v0"
-      ]
-    ],
-    [
-      "rgb1:R",
-      "mega:18",
-      "green",
-      [
-        "v0"
-      ]
-    ],
-    [
-      "rgb1:G",
-      "mega:19",
-      "green",
-      [
-        "v0"
-      ]
-    ],
-    [
-      "rgb1:B",
-      "mega:20",
-      "green",
-      [
-        "v0"
-      ]
-    ],
-    [
-      "rgb1:COM",
-      "mega:GND.1",
-      "black",
-      [
-        "v0"
-      ]
-    ],
-    [
-      "bz1:2",
-      "mega:16",
-      "yellow",
-      [
-        "v0"
-      ]
-    ],
-    [
-      "bz1:1",
-      "mega:GND.1",
-      "black",
-      [
-        "v0"
-      ]
-    ]
+    [ "lcd1:VSS", "mega:GND.1", "black", [ "v0" ] ],
+    [ "lcd1:VDD", "mega:5V", "red", [ "v0" ] ],
+    [ "lcd1:RS", "mega:12", "violet", [ "v0" ] ],
+    [ "lcd1:RW", "mega:GND.1", "violet", [ "v0" ] ],
+    [ "lcd1:E", "mega:11", "violet", [ "v0" ] ],
+    [ "lcd1:D4", "mega:10", "violet", [ "v0" ] ],
+    [ "lcd1:D5", "mega:13", "violet", [ "v0" ] ],
+    [ "lcd1:D6", "mega:14", "violet", [ "v0" ] ],
+    [ "lcd1:D7", "mega:15", "violet", [ "v0" ] ],
+    [ "lcd1:A", "mega:5V", "red", [ "v0" ] ],
+    [ "lcd1:K", "mega:GND.1", "violet", [ "v0" ] ],
+    [ "pir1:VCC", "mega:5V", "red", [ "v0" ] ],
+    [ "pir1:GND", "mega:GND.1", "black", [ "v0" ] ],
+    [ "pir1:OUT", "mega:1", "cyan", [ "v0" ] ],
+    [ "keypad1:R1", "mega:9", "orange", [ "v0" ] ],
+    [ "keypad1:R2", "mega:8", "orange", [ "v0" ] ],
+    [ "keypad1:R3", "mega:7", "orange", [ "v0" ] ],
+    [ "keypad1:R4", "mega:6", "orange", [ "v0" ] ],
+    [ "keypad1:C1", "mega:5", "orange", [ "v0" ] ],
+    [ "keypad1:C2", "mega:4", "orange", [ "v0" ] ],
+    [ "keypad1:C3", "mega:3", "orange", [ "v0" ] ],
+    [ "keypad1:C4", "mega:2", "orange", [ "v0" ] ],
+    [ "rgb1:R", "mega:18", "green", [ "v0" ] ],
+    [ "rgb1:G", "mega:19", "green", [ "v0" ] ],
+    [ "rgb1:B", "mega:20", "green", [ "v0" ] ],
+    [ "rgb1:COM", "mega:GND.1", "black", [ "v0" ] ],
+    [ "bz1:2", "mega:16", "yellow", [ "v0" ] ],
+    [ "bz1:1", "mega:GND.1", "black", [ "v0" ] ]
   ],
   "dependencies": {}
 }
